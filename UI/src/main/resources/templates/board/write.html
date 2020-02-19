@@ -1,0 +1,46 @@
+<div th:insert="default/header.html" id="header"></div>
+
+	<link type="text/css" th:href="@{/css/write.css}" rel="stylesheet">
+	
+    <script src="/js/write.js"></script>
+    
+    <input type="hidden" id="writer" th:value="${#authentication.principal.memberId}" />
+    <input type="hidden" id="type" th:value="${type}" />
+    <input type="hidden" id="subType" th:value="${subType}" />
+    
+    <div class="write">
+      <div class="row">
+        <div class="col-md-12">
+        
+          <h2 class="write-header"><strong>WRITE</strong></h2>
+          
+          <div class="title">
+            <label for="labelWriteTitle" class="col-md-1 control-label">제목</label>
+            <div class="col-md-11">
+	          <input type="text" id="title" name="title" class="form-control" required>
+	        </div>
+	      </div>
+	      
+	      <textarea id="content" name="content" class="form-control" rows="15" required></textarea>
+          
+          <!-- 
+          <div class="type">
+            <label for="labelWriteTitle" class="col-md-1 control-label">분류</label>
+            <select id="type" name="type" class="col-md-2 form-control" style="width: 100px">
+			  <option>공지</option>
+			  <option>잡담</option>
+		    </select>
+		    <div class="col-md-9"></div>
+		  </div>
+		   -->
+		  
+		  <div class="buttons">
+		    <button type="button" id="register" name="register" class="btn btn-success">등록</button>
+		    <button type="button" id="cancle" name="cancle" class="btn btn-danger">취소</button>
+		  </div>
+		  
+        </div>
+      </div>
+    </div> 
+
+<div th:insert="default/footer.html" id="footer"></div>

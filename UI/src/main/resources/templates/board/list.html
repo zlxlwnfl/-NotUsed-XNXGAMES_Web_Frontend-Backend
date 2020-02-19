@@ -1,0 +1,47 @@
+<div th:insert="default/header.html" id="header"></div>
+
+    <link type="text/css" th:href="@{/css/list.css}" rel="stylesheet">
+    
+    <div class="list">
+      <div class="row">
+        <div class="col-md-12"> 
+        
+          <h2 class="list-header"><strong>FREE BOARD</strong></h2>
+          
+	      <div class="col-sm-5">
+	          <div class="input-group">
+	            <input type="text" id="inputSearch" name="inputSearch" class="form-control" autocomplete="true">
+	          <span class="input-group-btn"><button id="buttonSearch" class="btn btn-default" type="button">검색</button></span>
+	        </div>
+	      </div>
+          <div class="col-md-2 col-md-offset-5">
+            <a th:href="@{/board/write(type=${type}, subType=${subType})}">
+              <button type="button" id="buttonWrite" class="btn btn-primary">글쓰기</button>
+            </a>
+          </div>
+          
+          <div class="table"> <!-- table start -->
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="col-md-1">ID</th>
+                  <th class="col-md-1">구분</th>
+                  <th class="col-md-5">제목</th>
+                  <th class="col-md-2">글쓴이</th>
+                  <th class="col-md-1">추천</th>
+                  <th class="col-md-1">조회</th>
+                  <th class="col-md-1">날짜</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </div> <!-- table end -->
+          
+        </div> 
+      </div>
+    </div>
+
+<div th:insert="default/footer.html" id="footer"></div>

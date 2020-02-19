@@ -1,0 +1,47 @@
+<div th:insert="default/header.html" id="header"></div>
+
+    <!-- Custom styles for this template -->
+    <link href="css/signup.css" rel="stylesheet">
+    
+    <script src="/js/join.js"></script>
+
+		<div id="join">
+	      <form class="form-join" action="/join" method="post">
+	        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	        <h2 class="form-signin-heading" style="align: center;">JOIN</h2>
+	        
+	        <label for="inputId" class="col-sm-4 control-label">ID</label>
+	        <div class="col-sm-8">
+	        	<div class="input-group">
+	        		<input type="text" id="id" name="memberId" class="form-control" placeholder="ALPHABET+NUMBER 3~10" required autofocus>
+	        		<span class="input-group-btn"><button id="idCheck" class="btn btn-default" type="button">CHECK</button></span>
+	        	</div>
+	        </div>
+	        <div class="col-sm-12">
+	        	<div class="idCheckResult"></div>
+	        </div>
+	        <label for="inputPassword" class="col-sm-4 control-label">PASSWORD</label>
+	        <div class="col-sm-8">
+	        	<input type="password" id="password" name="password" class="form-control" placeholder="ALPHABET+NUMBER 6~15" required>
+	        </div>
+	        <label for="inputPasswordCheck" class="col-sm-4 control-label">PASSWORD CHECK</label>
+	        <div class="col-sm-8">
+	        	<input type="password" id="passwordCheck" class="form-control" placeholder="ALPHABET+NUMBER 6~15" required>
+	        </div>
+	        <label for="inputBirthdate" class="col-sm-4 control-label">BIRTH DATE</label>
+	        <div class="col-sm-8">
+	        	<input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="YYYYMMDD" required>
+	        </div>
+	        <label for="inputGender" class="col-sm-4 control-label">GENDER</label>
+	        <div class="col-sm-8" id="genderRadio">
+				<input type="radio" name="gender" id="man" value="M" checked="checked"/>
+				<label for="man">MAN</label>
+				<input type="radio" name="gender" id="woman" value="W"/>
+				<label for="woman">WOMAN</label>
+			</div>
+	        
+	        <button type="submit" class="btn btn-primary btn-block submit">JOIN</button>
+	      </form>
+	    </div> <!-- /join -->
+
+<div th:insert="default/footer.html" id="footer"></div>

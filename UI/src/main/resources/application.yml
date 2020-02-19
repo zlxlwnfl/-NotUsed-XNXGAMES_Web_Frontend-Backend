@@ -1,0 +1,28 @@
+# XNXGAMES_UI
+server:
+  port: 8080
+
+# HTTP encoding
+  tomcat:
+    uri-encoding: UTF-8
+    
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# DB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/XNXGAMES_member_core?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 5460
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      

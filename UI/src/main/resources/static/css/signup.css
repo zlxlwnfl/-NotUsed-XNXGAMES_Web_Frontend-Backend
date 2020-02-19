@@ -1,0 +1,38 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #FFF;
+}
+
+.form-join {
+  max-width: 700px;
+  padding: 15px;
+  margin: 10px auto;
+}
+.form-join .form-signin-heading {
+  margin-bottom: 15px;
+}
+
+.form-join .control-label {
+	margin-bottom: 15px;
+}
+
+.form-join .form-control,
+#idCheck {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.form-join .form-control:focus {
+  z-index: 2;
+}
+
+.submit {
+	margin-top: 10px;
+}

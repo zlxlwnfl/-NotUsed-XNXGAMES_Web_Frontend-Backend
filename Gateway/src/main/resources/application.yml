@@ -1,0 +1,26 @@
+# XNXGAMES_Gateway
+server:
+  port: 8000
+  
+# Default
+spring:  application:    name: gateway
+
+# Gateway
+zuul:
+  ignoredServices: '*'
+  prefix: /public
+  routes:
+    user:
+      path: /member/**
+      serviceId: member
+      strip-prefix: false
+    board:
+      path: /board/**
+      serviceId: board
+      strip-prefix: false
+      
+# ServiceRegistry
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/

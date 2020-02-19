@@ -1,0 +1,25 @@
+# XNXGAMES_Member
+server:
+  port: 8081
+
+# DB
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/XNXGAMES_member?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 5460
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+# Default  application:    name: member
+
+# ServiceRegistry
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
