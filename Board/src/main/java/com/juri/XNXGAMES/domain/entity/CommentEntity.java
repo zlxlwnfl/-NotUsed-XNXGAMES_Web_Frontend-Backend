@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -35,7 +36,7 @@ public class CommentEntity {
 	private Long postId;
 	
 	@Column(length = 10, nullable = false)
-	private String memberId;
+	private String writerId;
 	
 	@CreationTimestamp
 	private Date regdate;
@@ -43,7 +44,7 @@ public class CommentEntity {
 	@Column(nullable = false)
 	private String content;
 	
-	@Column(nullable = true)
-	private int hearts;
+	@ColumnDefault("0")
+	private int heartCount;
 	
 }

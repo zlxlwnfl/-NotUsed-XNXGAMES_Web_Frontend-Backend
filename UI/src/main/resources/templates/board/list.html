@@ -2,6 +2,22 @@
 
     <link type="text/css" th:href="@{/css/list.css}" rel="stylesheet">
     
+    <script type="text/javascript" th:src="@{/js/list.js}"></script>
+    
+    <form id='boardCriteriaFormGoList' action="/board/list" method='get'>
+      <input type="hidden" id="boardType" name="boardType" th:value="${boardType.boardType}" />
+      <input type="hidden" id="boardSubType" name="boardSubType" th:value="${boardType.boardSubType}" />
+      <input type="hidden" id="currentPageNum" name="currentPageNum" th:value="${paging.currentPageNum}" />
+      <input type="hidden" id="amountData" name="amountData" th:value="${paging.amountData}" />
+    </form>
+    
+    <form id='boardCriteriaFormGoWrite' action="/board/write" method='get'>
+      <input type="hidden" name="boardType" th:value="${boardType.boardType}" />
+      <input type="hidden" name="boardSubType" th:value="${boardType.boardSubType}" />
+      <input type="hidden" name="currentPageNum" th:value="${paging.currentPageNum}" />
+      <input type="hidden" name="amountData" th:value="${paging.amountData}" />
+    </form>
+    
     <div class="list">
       <div class="row">
         <div class="col-md-12"> 
@@ -10,14 +26,12 @@
           
 	      <div class="col-sm-5">
 	          <div class="input-group">
-	            <input type="text" id="inputSearch" name="inputSearch" class="form-control" autocomplete="true">
+	            <input type="text" id="inputSearch" class="form-control" autocomplete="true">
 	          <span class="input-group-btn"><button id="buttonSearch" class="btn btn-default" type="button">검색</button></span>
 	        </div>
 	      </div>
           <div class="col-md-2 col-md-offset-5">
-            <a th:href="@{/board/write(type=${type}, subType=${subType})}">
-              <button type="button" id="buttonWrite" class="btn btn-primary">글쓰기</button>
-            </a>
+            <button type="button" id="buttonWrite" onclick="goWrite()" class="btn btn-primary">글쓰기</button>
           </div>
           
           <div class="table"> <!-- table start -->
@@ -33,12 +47,13 @@
                   <th class="col-md-1">날짜</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                </tr>
+              <tbody class="postList">
               </tbody>
             </table>
           </div> <!-- table end -->
+          
+          <div id="pagination">
+          </div>
           
         </div> 
       </div>

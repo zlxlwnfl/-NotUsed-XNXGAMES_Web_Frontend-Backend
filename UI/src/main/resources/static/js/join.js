@@ -1,21 +1,17 @@
 function idOverlapCheck(memberId) {
-	var csrfHeaderName = $("meta[name='_csrf_header']").attr("content");
-	var csrfTokenValue = $("meta[name='_csrf']").attr("content");
-	
-	console.log("try id:" + memberId);
-	
+    var header = $("meta[name='_csrf_header']").attr("content");
+	var token = $("meta[name='_csrf']").attr("content");
+    
 	$.ajax({
 		dataType: 'text',
 	    type: 'POST',
 		url: "/join/idCheck",
-		contentType :"application/text; charset=utf-8",
+		contentType :"application/text",
 		data: memberId,
 	    beforeSend: function(xhr) {
-	    	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+	    	xhr.setRequestHeader(header, token);
 	    },
 	    success: function(result) {
-	    	console.log(result);
-	    	
 	    	var str = "";
 	    	
 	    	if(result == "true") {

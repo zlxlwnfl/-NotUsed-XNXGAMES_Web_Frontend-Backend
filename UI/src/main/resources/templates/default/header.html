@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-
-	<meta name="_csrf" th:content="${_csrf.token}">
-	<meta name="_csrf_header" th:content="${_csrf.headerName}">
+    
+    <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+    <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
 
     <title>XNXGAMES</title>
 
@@ -17,12 +17,17 @@
     <link type="text/css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
   </head>
 
   <body>
+  
+    <form id='criteriaForm' action="/board/list" method='get'>
+	  <input type='hidden' name='boardType' value=''>
+	  <input type='hidden' name='boardSubType' value=''>
+    </form>
+  
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -38,7 +43,7 @@
           <ul class="nav navbar-nav">
             <li><a href="#">GAME RANKING</a></li>
             <li><a href="#">GAME BOARD</a></li>
-            <li><a href="/board/list?type=free&subType=free">FREE BOARD</a></li>
+            <li><a href="/board/list?boardType=free&boardSubType=free">FREE BOARD</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           	<li>

@@ -19,7 +19,6 @@ import com.juri.XNXGAMES.service.MemberService;
 import lombok.AllArgsConstructor;
 
 @Controller
-@CrossOrigin(origins = "*")
 @RequestMapping("/*")
 @AllArgsConstructor
 public class MemberController {

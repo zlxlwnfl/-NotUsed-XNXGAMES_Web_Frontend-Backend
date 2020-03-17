@@ -1,0 +1,82 @@
+<div th:insert="default/header.html" id="header"></div>
+
+	<link type="text/css" th:href="@{/css/read.css}" rel="stylesheet">
+	
+	<script src="/js/read.js"></script>
+	
+	<div sec:authorize="isAuthenticated()">
+	  <input type="hidden" id="readerId" th:value="${#authentication.principal.memberId}" />
+	</div>
+
+	<form id='boardCriteriaFormGoList' action="/board/list" method='get'>
+      <input type="hidden" id="boardType" name="boardType" th:value="${boardType.boardType}" />
+      <input type="hidden" id="boardSubType" name="boardSubType" th:value="${boardType.boardSubType}" />
+      <input type="hidden" id="currentPageNum" name="currentPageNum" th:value="${paging.currentPageNum}" />
+      <input type="hidden" id="amountData" name="amountData" th:value="${paging.amountData}" />
+    </form>
+    
+    <form id='boardCriteriaFormGoModify' action="/board/modify" method='get'>
+      <input type="hidden" name="boardType" th:value="${boardType.boardType}" />
+      <input type="hidden" name="boardSubType" th:value="${boardType.boardSubType}" />
+      <input type="hidden" name="currentPageNum" th:value="${paging.currentPageNum}" />
+      <input type="hidden" name="amountData" th:value="${paging.amountData}" />
+      <input type="hidden" name="postId" th:value="${postId}" />
+    </form>
+    
+	<input type="hidden" id="postId" th:value="${postId}" />
+		  
+	<div class="read">
+      <div class="row">
+        <div class="col-md-12">
+        
+          <h5 id="postType" th:text="${post.postType}" style="color:DarkGray"></h5> <!-- 타입 -->
+          <h2 id="title" th:text="${post.title}"></h2> <!-- 제목 -->
+          
+          <div class="metadata">
+            <h5 id="writerId" th:text="${post.writerId}"></h5> <!-- 작성자 -->
+            <h5 id="regdate" th:text="${post.regdate}" style="color:DarkGray"></h5> <!-- 작성일 -->
+            <h5 id="hits" th:text="${post.hits}" class="text-right" style="color:DarkGray"></h5> <!-- 조회수 -->
+	      </div>
+	      
+	      <p id="content" th:text="${post.content}"></p> <!-- 본문 -->
+	      
+	      <div class="gameTag"> <!-- 게임태그 -->
+	        <h2><strong>#</strong></h2><br>
+			<div th:each="gameTag : ${post.gameTagList}">
+			  <div style="margin-bottom: 10px">
+			    <span class="label label-info" th:text="${gameTag}"></span>
+			  </div>
+			</div>
+	      </div>
+		  
+		  <div class="col-md-12"> <!-- 글쓴이 전용 메뉴 -->
+		    <div id="manage" class="buttons col-md-2 col-md-push-10" style="display: none">
+		      <button type="submit" id="modify" onclick="goModify();" class="btn btn-warning">수정</button>
+		      <button type="button" id="delete" class="btn btn-danger">삭제</button>
+		    </div>
+		  </div>
+		  
+		  <div class="list">
+		    <button type="button" id="list" onclick="goList()" class="btn btn-default">목록</button>
+		  </div>
+		  
+		  <div class="comments"> <!-- 댓글 -->
+		  
+		    <div sec:authorize="isAuthenticated()">
+	  		  <h5 id="commenterId"><span sec:authentication="name"></span></h5>
+	  		  <textarea id="commentContent" class="form-control" rows="5"></textarea>
+	  		  <div style="width: 100%; text-align: right; margin-bottom: 10px">
+	  		    <button type="button" id="commentRegister" class="btn btn-primary">등록</button>
+	  		  </div>
+			</div>
+			
+			<div class="commentList">
+			</div>
+		  
+		  </div>
+		  
+        </div>
+      </div>
+    </div> 
+
+<div th:insert="default/footer.html" id="footer"></div>

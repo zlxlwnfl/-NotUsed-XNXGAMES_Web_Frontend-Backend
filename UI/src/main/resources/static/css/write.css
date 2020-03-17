@@ -17,8 +17,38 @@ body {
   margin-bottom: 10px;
 }
 
+.inputGameTagSearch {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#labelGameTag {
+  margin-left: 13px;
+  margin-right: 25px;
+}
+
+#inputGameTag {
+  width: 888px;
+  display: inline;
+  position: relative;
+}
+
+.gameTagSearch {
+  width: 888px;
+  position: absolute;
+  top: 150px;
+  left: 113px;
+  z-index: 1000;
+}
+
+.gameTagClear {
+  max-width: 900px;
+  margin-bottom: 10px;
+  width: max-content;
+}
+
 .buttons {
   width: 400px;
-  text-align: center;
   margin: 10px auto;
+  text-align: center;
 }

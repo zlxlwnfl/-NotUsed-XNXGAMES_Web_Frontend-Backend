@@ -1,14 +1,16 @@
 <div th:insert="default/header.html" id="header"></div>
 
     <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
 		<div id="login">
 	      <form id="tryLogin" class="form-signin" action="/login" method="post">
 	        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	        
 	        <h2 class="form-signin-heading">LOGIN</h2>
+	        
 	        <label for="inputId" class="sr-only">ID</label>
-	        <input type="text" id="id" name="username" class="form-control" placeholder="ID" required autofocus autocomplete="true">
+	        <input type="text" id="id" name="username" class="form-control" placeholder="ID" required autofocus>
 	        <label for="inputPassword" class="sr-only">PASSWORD</label>
 	        <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD" required>
 	        <div class="checkbox">

@@ -17,9 +17,17 @@ spring:
       ddl-auto: update
 
 # Default  application:    name: member
+    
+# RabbitMQ
+  rabbitmq:
+    host: localhost
 
 # ServiceRegistry
 eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/eureka/
+
+# Log
+logging:
+  config: classpath:logback-spring.xml

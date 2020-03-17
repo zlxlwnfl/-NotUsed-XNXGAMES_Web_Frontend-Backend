@@ -1,3 +1,7 @@
 # XNXGAMES_ServiceRegistry
 server:
   port: 8761
+
+# Log
+logging:
+  config: classpath:logback-spring.xml

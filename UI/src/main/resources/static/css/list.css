@@ -14,3 +14,8 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+#pagination {
+  width: auto;
+  text-align: center;
+}

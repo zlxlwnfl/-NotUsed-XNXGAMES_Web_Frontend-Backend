@@ -1,0 +1,59 @@
+<div th:insert="default/header.html" id="header"></div>
+
+	<link type="text/css" th:href="@{/css/modify.css}" rel="stylesheet">
+	
+    <script src="/js/modify.js"></script>
+    
+    <form id='boardCriteriaFormGoRead' action="/board/read" method='get'>
+      <input type="hidden" id="boardType" name="boardType" th:value="${boardType.boardType}" />
+      <input type="hidden" id="boardSubType" name="boardSubType" th:value="${boardType.boardSubType}" />
+      <input type="hidden" id="currentPageNum" name="currentPageNum" th:value="${paging.currentPageNum}" />
+      <input type="hidden" id="amountData" name="amountData" th:value="${paging.amountData}" />
+      <input type="hidden" id="postId" name="postId" th:value="${postId}" />
+    </form>
+    
+    <input type="hidden" id="writerId" th:value="${post.writerId}" />
+    <input type="hidden" id="postType" th:value="${post.postType}" />
+    
+    <script type="text/javascript" th:inline="javascript">
+	/* <![CDATA[ */
+		gameTagClearArr = /*[[${post.gameTagList}]]*/;
+	/* ]]> */
+	</script>
+    
+    <div class="modify">
+      <div class="row">
+        <div class="col-md-12">
+        
+          <h2 class="modify-header"><strong>MODIFY</strong></h2>
+          
+          <div class="title">
+            <label for="labelModifyTitle" class="col-md-1 control-label">제목</label>
+            <div class="col-md-11">
+	          <input type="text" id="title" th:value="${post.title}" class="form-control" required>
+	        </div>
+	      </div>
+	      
+	      <div class="gameTag">
+	        <div class="inputGameTagSearch">
+              <label for="labelGameTag" id="labelGameTag" class="control-label">게임태그</label>
+	          <input type="text" id="inputGameTag" class="form-control" autocomplete="false">
+	        </div>
+	        <div class="gameTagSearch">
+			</div>
+			<div class="gameTagClear">
+			</div>
+	      </div>
+	      
+	      <textarea id="content" th:text="${post.content}" class="form-control" rows="15" required></textarea>
+		  
+		  <div class="buttons">
+		    <button type="button" id="register" class="btn btn-success">등록</button>
+		    <button type="button" id="cancle" onclick="goRead()" class="btn btn-warning">취소</button>
+		  </div>
+		  
+        </div>
+      </div>
+    </div> 
+
+<div th:insert="default/footer.html" id="footer"></div>

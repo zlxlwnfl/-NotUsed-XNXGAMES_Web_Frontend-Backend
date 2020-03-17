@@ -1,13 +1,14 @@
 <div th:insert="default/header.html" id="header"></div>
 
     <!-- Custom styles for this template -->
-    <link href="css/signup.css" rel="stylesheet">
+    <link href="css/join.css" rel="stylesheet">
     
     <script src="/js/join.js"></script>
 
 		<div id="join">
 	      <form class="form-join" action="/join" method="post">
 	        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	        
 	        <h2 class="form-signin-heading" style="align: center;">JOIN</h2>
 	        
 	        <label for="inputId" class="col-sm-4 control-label">ID</label>
@@ -34,14 +35,14 @@
 	        </div>
 	        <label for="inputGender" class="col-sm-4 control-label">GENDER</label>
 	        <div class="col-sm-8" id="genderRadio">
-				<input type="radio" name="gender" id="man" value="M" checked="checked"/>
+				<input type="radio" name="gender" value="M" checked="checked"/>
 				<label for="man">MAN</label>
-				<input type="radio" name="gender" id="woman" value="W"/>
+				<input type="radio" name="gender" value="W"/>
 				<label for="woman">WOMAN</label>
 			</div>
 	        
 	        <button type="submit" class="btn btn-primary btn-block submit">JOIN</button>
 	      </form>
-	    </div> <!-- /join -->
+	    </div> 
 
 <div th:insert="default/footer.html" id="footer"></div>

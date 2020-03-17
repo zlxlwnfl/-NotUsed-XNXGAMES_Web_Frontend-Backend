@@ -10,6 +10,10 @@ zuul:
   ignoredServices: '*'
   prefix: /public
   routes:
+    ui:
+      path: /rpc/**
+      serviceId: ui
+      strip-prefix: false
     user:
       path: /member/**
       serviceId: member
@@ -18,9 +22,23 @@ zuul:
       path: /board/**
       serviceId: board
       strip-prefix: false
-      
+  host:    time-to-live: -1
+    connect-timeout-millis: 5000
+    max-per-route-connections: 10000
+    max-total-connections: 5000
+    socket-timeout-millis: 60000
+     
+# Ribbon
+  ribbon:
+    eager-load:
+      enabled: true
+    ReadTimeout: 60000
+  
 # ServiceRegistry
 eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/eureka/
+      
+# Log
+logging:  config: classpath:logback-spring.xml

@@ -1,0 +1,38 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #FFF;
+}
+
+.read {
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+#title {
+  margin: 10px;
+}
+
+.content {
+  margin-bottom: 50px;
+}
+
+.metadata,
+.gameTag {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  width: 400px;
+  margin: 10px auto;
+}
+
+.list {
+  width: 200px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+#commentRegister {
+  margin: 10px auto;
+}
