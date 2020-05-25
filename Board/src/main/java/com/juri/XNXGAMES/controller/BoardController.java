@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.AllArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {

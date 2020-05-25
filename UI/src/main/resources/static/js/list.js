@@ -4,8 +4,8 @@ function getPostList() {
 	
 	$.ajax({
 		dataType: 'json',
-	    type: 'POST',
-		url: "http://localhost:8000/public/board/post/getPostList",
+	    type: 'GET',
+		url: "http://localhost:8000/public/board/post/list",
 		contentType:"application/json",
 		data: JSON.stringify({
 			boardType: boardType,
@@ -44,8 +44,8 @@ function getPostList() {
 function getAmountPost() {
 	$.ajax({
 		dataType: 'text',
-	    type: 'POST',
-		url: "http://localhost:8000/public/board/post/getAmountPost",
+	    type: 'GET',
+		url: "http://localhost:8000/public/board/post/amount",
 		data: {
 			boardType: boardType,
 			boardSubType: boardSubType

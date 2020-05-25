@@ -9,8 +9,8 @@ function modifyPost() {
 	var postType = $("#postType").val();
 	
 	$.ajax({
-	    type: 'POST',
-		url: "http://localhost:8000/public/board/post/updatePost",
+	    type: 'PUT',
+		url: "http://localhost:8000/public/board/post",
 		contentType :"application/json",
 		data: JSON.stringify({
 			postId : postId,

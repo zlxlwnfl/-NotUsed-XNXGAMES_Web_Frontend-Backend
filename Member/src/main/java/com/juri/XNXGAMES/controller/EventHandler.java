@@ -23,13 +23,13 @@ public class EventHandler {
 	
 	@RabbitListener(bindings = @QueueBinding(
 			value = @Queue(value = "BoardToMemberQueue", durable = "true"),
-			exchange = @Exchange(value = "BoardExchange", type = "topic", durable = "true"),
+			exchange = @Exchange(value = "BoardExchange", type = "direct", durable = "true"),
 			key = "BoardToMember.Post"
 			))
 	public void boardToMemberPostHandle(final BoardToMemberPostMessage message) {
-		if(message.getType() == "create")
+		if(message.getType().equals("create"))
 			memberPostService.insertMemberPost(message);
-		else if(message.getType() == "delete")
+		else if(message.getType().equals("delete"))
 			memberPostService.deleteMemberPost(message);
 	}
 	

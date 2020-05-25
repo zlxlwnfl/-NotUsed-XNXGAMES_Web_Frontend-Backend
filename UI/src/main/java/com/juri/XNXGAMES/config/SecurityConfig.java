@@ -23,6 +23,7 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.CorsFilter;
@@ -45,21 +46,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Bean
-    public CorsFilter corsFilter() {
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		CorsConfiguration config = new CorsConfiguration();
-	    //config.setAllowCredentials(true); // you USUALLY want this
-	    config.addAllowedOrigin("*");
-	    config.addAllowedHeader("*");
-	    config.addAllowedMethod("OPTIONS");
-	    config.addAllowedMethod("HEAD");
-	    config.addAllowedMethod("GET");
-	    config.addAllowedMethod("PUT");
-	    config.addAllowedMethod("POST");
-	    config.addAllowedMethod("DELETE");
-	    config.addAllowedMethod("PATCH");
-	    source.registerCorsConfiguration("/**", config);
-	    return new CorsFilter(source);
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("*"));
+        //configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
 	@Override
@@ -74,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors();
+		http.cors().configurationSource(corsConfigurationSource());
 		
 		// 한글 처리
 		CharacterEncodingFilter filter = new CharacterEncodingFilter();        
@@ -85,6 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().ignoringAntMatchers("http://localhost:8000/public/**");
 		
 		http.authorizeRequests()
+				.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
         		.antMatchers("/**").permitAll()
         	.and()
             	.formLogin()

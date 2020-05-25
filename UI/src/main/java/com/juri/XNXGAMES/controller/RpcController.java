@@ -13,18 +13,16 @@ import com.juri.XNXGAMES.DTO.PostGetDTO;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/rpc/*")
 @AllArgsConstructor
 public class RpcController {
 
     private RestTemplate restTemplate;
 
-    @GetMapping("/getPost")
     public PostGetDTO getPost(String postId) {
     	ResponseEntity<PostGetDTO> result;
     	
-    	result = restTemplate.postForEntity(
-    			"http://localhost:8000/public/board/post/getPost?postId=" + postId,
+    	result = restTemplate.getForEntity(
+    			"http://localhost:8000/public/board/post?postId=" + postId,
     			null,
     			PostGetDTO.class);
     	

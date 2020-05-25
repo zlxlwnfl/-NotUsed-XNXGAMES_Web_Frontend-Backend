@@ -3,13 +3,7 @@ package com.juri.XNXGAMES.controller;
 import java.util.List;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.juri.XNXGAMES.DTO.BoardCriteriaDTO;
 import com.juri.XNXGAMES.DTO.PostGetDTO;
@@ -22,7 +16,7 @@ import com.juri.XNXGAMES.service.PostService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/board/post/*")
 @AllArgsConstructor
 public class PostController {
@@ -30,7 +24,7 @@ public class PostController {
 	BoardService boardService;
 	PostService postService;
 	
-	@PostMapping("/insertPost")
+	@PostMapping("/")
 	public void insertPost(@RequestBody PostPutDTO postDTO) {
 		String boardType = postDTO.getBoardType();
 		String boardSubType = postDTO.getBoardSubType();
@@ -39,12 +33,12 @@ public class PostController {
 		postService.insertPost(boardId, postDTO);
 	}
 	
-	@PostMapping("/updatePost")
+	@PutMapping("/")
 	public void updatePost(@RequestBody PostPutDTO postDTO) {
 		postService.updatePost(postDTO);
 	}
 	
-	@PostMapping("/getPostList")
+	@GetMapping("/list")
 	public List<PostGetListDTO> getPostList(@RequestBody BoardCriteriaDTO boardCriDTO) {
 		System.out.println(boardCriDTO.getBoardType() + " " + boardCriDTO.getBoardSubType());
 		
@@ -54,17 +48,17 @@ public class PostController {
 		return postService.getPostList(boardId, boardCriDTO);
 	}
 	
-	@PostMapping("/getPost")
+	@GetMapping("/")
 	public PostGetDTO getPost(Long postId) {
 		return postService.getPost(postId);
 	}
 	
-	@PostMapping("/deletePost")
+	@DeleteMapping("/")
 	public void deletePost(Long postId) {
 		postService.deletePost(postId);
 	}
 	
-	@PostMapping("/getAmountPost")
+	@GetMapping("/amount")
 	public int getAmountPost(@RequestParam String boardType,
 							 @RequestParam String boardSubType) {
 		Long boardId = boardService.searchBoard(boardType, boardSubType);

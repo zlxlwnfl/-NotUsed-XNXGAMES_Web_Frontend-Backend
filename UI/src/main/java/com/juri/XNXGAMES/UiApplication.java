@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @EnableEurekaClient
 @SpringBootApplication
 public class UiApplication {

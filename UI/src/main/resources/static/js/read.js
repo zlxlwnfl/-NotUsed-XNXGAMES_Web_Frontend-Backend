@@ -12,8 +12,8 @@ function getCommentList() {
 	
 	$.ajax({
 		dataType: 'json',
-	    type: 'POST',
-		url: "http://localhost:8000/public/board/comment/getCommentList?postId=" + postId,
+	    type: 'GET',
+		url: "http://localhost:8000/public/board/comment?postId=" + postId,
 	    success: function(commentList) {
 	    	var str = "";
 	    	
@@ -59,8 +59,8 @@ function getCommentList() {
         			var content = $("#modifyCommentContent").val();
         			
         			$.ajax({
-        			    type: 'POST',
-        				url: "http://localhost:8000/public/board/comment/modifyComment",
+        			    type: 'PUT',
+        				url: "http://localhost:8000/public/board/comment",
         				contentType:"application/json",
         				data: JSON.stringify({
         					commentId: commentId,
@@ -84,8 +84,8 @@ function getCommentList() {
     			$(this).parent().parent().parent().parent().remove();
     			
     			$.ajax({
-    			    type: 'POST',
-    				url: "http://localhost:8000/public/board/comment/deleteComment?commentId=" + commentId,
+    			    type: 'DELETE',
+    				url: "http://localhost:8000/public/board/comment?commentId=" + commentId,
     				success: function() {
     					getCommentList();
     				},
@@ -107,8 +107,8 @@ function deletePost() {
 	var postId = $("#postId").val();
 	
 	$.ajax({
-	    type: 'POST',
-		url: "http://localhost:8000/public/board/post/deletePost?postId=" + postId,
+	    type: 'DELETE',
+		url: "http://localhost:8000/public/board/post?postId=" + postId,
 		success: function() {
 	    	location.href = "/board/list?boardType=" + boardType + "&boardSubType=" + boardSubType;
 		},
@@ -127,7 +127,7 @@ function insertComment() {
 	
 	$.ajax({
 	    type: 'POST',
-		url: "http://localhost:8000/public/board/comment/insertComment",
+		url: "http://localhost:8000/public/board/comment",
 		contentType:"application/json",
 		traditional: true,
 		data: JSON.stringify({

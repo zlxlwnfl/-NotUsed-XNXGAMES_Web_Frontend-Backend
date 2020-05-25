@@ -14,7 +14,7 @@ function insertPost() {
 	
 	$.ajax({
 	    type: 'POST',
-		url: "http://localhost:8000/public/board/post/insertPost",
+		url: "http://localhost:8000/public/board/post",
 		contentType:"application/json",
 		traditional: true,
 		data: JSON.stringify({

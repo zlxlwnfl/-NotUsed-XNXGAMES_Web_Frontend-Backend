@@ -12,12 +12,10 @@ import lombok.AllArgsConstructor;
 public class EventDispatcher {
 
 	private RabbitTemplate rabbitTemplate;
-	private String exchange;
+	private String exchange = "BoardExchange";
 
-	@Autowired
 	EventDispatcher(RabbitTemplate rabbitTemplate) {
 		this.rabbitTemplate = rabbitTemplate;
-		this.exchange = "BoardExchange";
 	}
 	
 	public void boardToMemberPostSend(BoardToMemberPostMessage message) {
