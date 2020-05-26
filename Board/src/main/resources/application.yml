@@ -27,7 +27,7 @@ spring:
     username: guest
     password: guest
 
-# ServiceRegistry
+# Discovery
 eureka:
   client:
     service-url:

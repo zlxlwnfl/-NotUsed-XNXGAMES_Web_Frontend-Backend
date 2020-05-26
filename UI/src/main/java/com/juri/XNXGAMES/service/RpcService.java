@@ -1,4 +1,4 @@
-package com.juri.XNXGAMES.controller;
+package com.juri.XNXGAMES.service;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-public class RpcController {
+public class RpcService {
 
     private RestTemplate restTemplate;
 

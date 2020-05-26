@@ -32,9 +32,8 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
-    ReadTimeout: 60000
   
-# ServiceRegistry
+# Discovery
 eureka:
   client:
     service-url:

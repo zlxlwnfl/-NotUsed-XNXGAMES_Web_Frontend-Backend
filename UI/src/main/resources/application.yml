@@ -30,7 +30,7 @@ spring:
   application:
     name: ui
       
-# ServiceRegistry
+# Discovery
 eureka:
   client:
     service-url:

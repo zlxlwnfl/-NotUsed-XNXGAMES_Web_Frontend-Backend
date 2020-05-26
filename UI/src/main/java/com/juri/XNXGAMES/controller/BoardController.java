@@ -18,6 +18,7 @@ import com.juri.XNXGAMES.DTO.PostGetDTO;
 import com.juri.XNXGAMES.domain.BoardType;
 import com.juri.XNXGAMES.domain.Paging;
 import com.juri.XNXGAMES.service.MemberService;
+import com.juri.XNXGAMES.service.RpcService;
 
 import lombok.AllArgsConstructor;
 
@@ -26,7 +27,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class BoardController {
 	
-	private RpcController rpcController;
+	private RpcService rpcService;
 
 	@GetMapping("/list")
 	public String list(BoardType boardType, Paging paging, Model model) {
@@ -50,7 +51,7 @@ public class BoardController {
 		model.addAttribute("boardType", boardType);
 		model.addAttribute("paging", paging);
 		model.addAttribute("postId", postId);
-		model.addAttribute("post", rpcController.getPost(postId));
+		model.addAttribute("post", rpcService.getPost(postId));
 	}
 	
 }
