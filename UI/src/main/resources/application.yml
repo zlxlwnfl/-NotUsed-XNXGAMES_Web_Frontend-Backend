@@ -17,7 +17,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/XNXGAMES_member_core?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
+    username: XNXGAMES_MEMBER_CORE
     password: 5460
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
