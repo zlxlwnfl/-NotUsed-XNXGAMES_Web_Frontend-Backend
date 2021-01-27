@@ -11,6 +11,7 @@
 	<groupId>com.juri.XNXGAMES</groupId>
 	<artifactId>Gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Gateway</name>
 	<description>XNXGAEMS_Gateway</description>
 

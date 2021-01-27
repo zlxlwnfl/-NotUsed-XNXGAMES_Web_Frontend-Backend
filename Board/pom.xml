@@ -11,6 +11,7 @@
 	<groupId>com.juri.XNXGAMES</groupId>
 	<artifactId>Board</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Board</name>
 	<description>XNXGAEMS_Board</description>
 

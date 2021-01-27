@@ -11,6 +11,7 @@
 	<groupId>com.juri.XNXGAMES</groupId>
 	<artifactId>Member</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Member</name>
 	<description>XNXGAEMS_Member</description>
 
