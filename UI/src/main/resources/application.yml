@@ -39,3 +39,62 @@ eureka:
 # Log
 logging:
   config: classpath:logback-spring.xml
+  
+# Resilience4j
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+    instances:
+      default:
+        baseConfig: default
+  retry:
+    configs:
+      default:
+        wait-duration: 100
+    instances:
+      default:
+        base-config: default
+  bulkhead:
+    configs:
+      default:
+        max-concurrent-calls: 100
+    instances:
+      default:
+        base-config: default
+  thread-pool-bulkhead:
+    configs:
+      default:
+        max-thread-pool-size: 4
+        core-thread-pool-size: 2
+        queue-capacity: 2
+    instances:
+      default:
+        base-config: default
+  ratelimiter:
+    configs:
+      default:
+        register-health-indicator: false
+        limit-for-period: 10
+        limit-refresh-period: 1s
+        timeout-duration: 0
+        event-consumer-buffer-size: 100
+    instances:
+      default:
+        base-config: default
+  timelimiter:
+    configs:
+      default:
+        cancel-running-future: false
+        timeout-duration: 2s
+    instances:
+      default:
+        base-config: default
