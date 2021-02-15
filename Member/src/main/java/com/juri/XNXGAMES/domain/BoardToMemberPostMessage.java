@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BoardToMemberPostMessage implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String type; // create, delete
 	private String memberId;
 	private Long postId;

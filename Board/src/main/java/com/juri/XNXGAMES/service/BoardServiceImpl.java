@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.juri.XNXGAMES.domain.entity.BoardEntity;
 import com.juri.XNXGAMES.domain.repository.BoardRepository;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor

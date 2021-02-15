@@ -13,7 +13,7 @@ public class MemberPostServiceImpl implements MemberPostService {
 	
 	@Override
 	public void insertMemberPost(BoardToMemberPostMessage message) {
-		MemberPostEntity memberPost = new MemberPostEntity().builder()
+		MemberPostEntity memberPost = MemberPostEntity.builder()
 				.memberId(message.getMemberId())
 				.postId(message.getPostId())
 				.build();

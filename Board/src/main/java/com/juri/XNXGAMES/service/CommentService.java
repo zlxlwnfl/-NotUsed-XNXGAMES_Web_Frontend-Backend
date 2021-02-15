@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.juri.XNXGAMES.DTO.CommentGetListDTO;
 import com.juri.XNXGAMES.DTO.CommentPutDTO;
-import com.juri.XNXGAMES.domain.entity.CommentEntity;
-import com.juri.XNXGAMES.domain.entity.PostEntity;
 
 public interface CommentService {
 

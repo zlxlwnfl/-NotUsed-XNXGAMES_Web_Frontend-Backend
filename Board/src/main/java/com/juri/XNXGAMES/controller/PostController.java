@@ -2,14 +2,20 @@ package com.juri.XNXGAMES.controller;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.juri.XNXGAMES.DTO.BoardCriteriaDTO;
 import com.juri.XNXGAMES.DTO.PostGetDTO;
 import com.juri.XNXGAMES.DTO.PostGetListDTO;
 import com.juri.XNXGAMES.DTO.PostPutDTO;
-import com.juri.XNXGAMES.domain.entity.PostEntity;
 import com.juri.XNXGAMES.service.BoardService;
 import com.juri.XNXGAMES.service.PostService;
 

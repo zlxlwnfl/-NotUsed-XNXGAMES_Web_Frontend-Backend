@@ -12,7 +12,6 @@ import com.juri.XNXGAMES.domain.entity.CommentEntity;
 import com.juri.XNXGAMES.domain.repository.CommentRepository;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor

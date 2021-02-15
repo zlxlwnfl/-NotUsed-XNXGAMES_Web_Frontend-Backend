@@ -1,7 +1,6 @@
 package com.juri.XNXGAMES.controller;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
@@ -9,7 +8,6 @@ import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
-import lombok.AllArgsConstructor;
 
 @Component
 public class EventDispatcher {

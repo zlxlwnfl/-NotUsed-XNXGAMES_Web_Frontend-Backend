@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 
-@if()
 @EnableAutoConfiguration(exclude = RabbitAutoConfiguration.class)
 @SpringBootApplication
 public class MemberApplication {

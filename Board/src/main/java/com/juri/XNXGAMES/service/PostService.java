@@ -6,7 +6,6 @@ import com.juri.XNXGAMES.DTO.BoardCriteriaDTO;
 import com.juri.XNXGAMES.DTO.PostGetDTO;
 import com.juri.XNXGAMES.DTO.PostGetListDTO;
 import com.juri.XNXGAMES.DTO.PostPutDTO;
-import com.juri.XNXGAMES.domain.entity.PostEntity;
 
 public interface PostService {
 

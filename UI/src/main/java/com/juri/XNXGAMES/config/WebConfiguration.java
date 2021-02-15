@@ -1,17 +1,18 @@
 package com.juri.XNXGAMES.config;
 
+import java.nio.charset.Charset;
+
 import org.apache.catalina.connector.Connector;
-import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -19,6 +20,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfiguration implements WebMvcConfigurer, 
 											WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
 
+	@Bean
+    public HttpMessageConverter<String> responseBodyConverter() {
+        return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+    }
+
+	@Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
+	
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(
@@ -41,24 +52,9 @@ public class WebConfiguration implements WebMvcConfigurer,
 			@Override
 			public void customize(Connector connector) {
 				connector.setAttribute("relaxedQueryChars", "<>[\\]^`{|}");
-				connector.setParseBodyMethods("POST,PUT,DELETE");
+				connector.setParseBodyMethods("POST,PUT");
 			}
 		});
-//        factory.addConnectorCustomizers((TomcatConnectorCustomizer)
-//                connector -> connector.setAttribute("relaxedQueryChars", "<>[\\]^`{|}"));
-//        factory.addConnectorCustomizers((TomcatConnectorCustomizer)
-//                connector -> connector.setParseBodyMethods("POST,PUT,DELETE"));
     }
-	
-//	@Bean
-//	public ServletWebServerFactory servletContainer() {
-//		return new TomcatServletWebServerFactory() {
-//			@Override
-//			protected void customizeConnector(Connector connector) {
-//	               super.customizeConnector(connector);
-//	               connector.setParseBodyMethods("POST,PUT,DELETE");
-//			}
-//		};
-//	}
 
 }
