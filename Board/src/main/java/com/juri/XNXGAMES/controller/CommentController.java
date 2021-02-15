@@ -2,9 +2,9 @@ package com.juri.XNXGAMES.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,6 @@ import com.juri.XNXGAMES.service.CommentService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/board/comment/*")
 @AllArgsConstructor
 public class CommentController {
@@ -35,13 +34,13 @@ public class CommentController {
 		commentService.modifyComment(commentDTO);
 	}
 	
-	@GetMapping("/")
-	public List<CommentGetListDTO> getCommentList(Long postId) {
+	@GetMapping("/{postId}")
+	public List<CommentGetListDTO> getCommentList(@PathVariable("postId") Long postId) {
 		return commentService.getCommentList(postId);
 	}
 	
-	@DeleteMapping("/")
-	public void deleteComment(Long commentId) {
+	@DeleteMapping("/{postId}")
+	public void deleteComment(@PathVariable("postId") Long commentId) {
 		commentService.deleteComment(commentId);
 	}
 	

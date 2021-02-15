@@ -2,6 +2,7 @@ package com.juri.XNXGAMES.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,8 +48,8 @@ public class MemberController {
 		return "member/join";
 	}
 	
-	@PostMapping("/join/idCheck")
-	public @ResponseBody String idCheck(@RequestBody String memberId) {
+	@PostMapping("/join/idCheck/{memberId}")
+	public @ResponseBody String idCheck(@PathVariable("memberId") String memberId) {
 		return memberService.checkIdPossible(memberId);
 	}
 	

@@ -2,9 +2,9 @@ package com.juri.XNXGAMES.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +22,6 @@ import com.juri.XNXGAMES.service.PostService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/board/post/*")
 @AllArgsConstructor
 public class PostController {
@@ -54,19 +53,19 @@ public class PostController {
 		return postService.getPostList(boardId, boardCriDTO);
 	}
 	
-	@GetMapping("/")
-	public PostGetDTO getPost(Long postId) {
+	@GetMapping("/{postId}")
+	public PostGetDTO getPost(@PathVariable("postId") Long postId) {
 		return postService.getPost(postId);
 	}
 	
-	@DeleteMapping("/")
-	public void deletePost(Long postId) {
+	@DeleteMapping("/{postId}")
+	public void deletePost(@PathVariable("postId") Long postId) {
 		postService.deletePost(postId);
 	}
 	
-	@GetMapping("/amount")
-	public int getAmountPost(@RequestParam String boardType,
-							 @RequestParam String boardSubType) {
+	@GetMapping("/amount/{boardType}/{boardSubType}")
+	public int getAmountPost(@PathVariable("boardType") String boardType,
+							 @PathVariable("boardSubType") String boardSubType) {
 		Long boardId = boardService.searchBoard(boardType, boardSubType);
 		
 		return postService.getAmountPost(boardId);
