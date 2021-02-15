@@ -12,7 +12,7 @@ function getCommentList() {
   $.ajax({
     dataType: "json",
     type: "GET",
-    url: "http://localhost:8000/public/board/comment?postId=" + postId,
+    url: "http://localhost:8000/public/board/comment/" + postId,
     xhrFields: {
       withCredentials: true,
     },
@@ -110,8 +110,7 @@ function getCommentList() {
 
         $.ajax({
           type: "DELETE",
-          url:
-            "http://localhost:8000/public/board/comment?commentId=" + commentId,
+          url: "http://localhost:8000/public/board/comment/" + commentId,
           success: function () {
             getCommentList();
           },
@@ -148,7 +147,7 @@ function deletePost() {
 
   $.ajax({
     type: "DELETE",
-    url: "http://localhost:8000/public/board/post?postId=" + postId,
+    url: "http://localhost:8000/public/board/post/" + postId,
     xhrFields: {
       withCredentials: true,
     },

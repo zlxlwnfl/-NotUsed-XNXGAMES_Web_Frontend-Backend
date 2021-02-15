@@ -62,11 +62,11 @@ function getAmountPost() {
   $.ajax({
     dataType: "text",
     type: "GET",
-    url: "http://localhost:8000/public/board/post/amount",
-    data: {
-      boardType: boardType,
-      boardSubType: boardSubType,
-    },
+    url:
+      "http://localhost:8000/public/board/post/amount/" +
+      boardType +
+      "/" +
+      boardSubType,
     xhrFields: {
       withCredentials: true,
     },

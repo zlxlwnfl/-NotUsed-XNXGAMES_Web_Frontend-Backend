@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@EnableAutoConfiguration(exclude = RabbitAutoConfiguration.class)
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = RabbitAutoConfiguration.class)
 public class BoardApplication {
 
 	public static void main(String[] args) {
