@@ -27,8 +27,7 @@ public class UiApplication {
     public HttpMessageConverter<String> responseBodyConverter() {
         return new StringHttpMessageConverter(Charset.forName("UTF-8"));
     }
-	
-	// 클라이언트 특성 상, 무조건 게이트웨이를 통과해야 하므로 Ribbon 미적용
+
 	@Bean
     public RestTemplate getRestTemplate() {
         return new RestTemplate();

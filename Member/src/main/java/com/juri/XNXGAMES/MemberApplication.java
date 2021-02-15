@@ -1,10 +1,12 @@
 package com.juri.XNXGAMES;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 
-@EnableEurekaClient
+@if()
+@EnableAutoConfiguration(exclude = RabbitAutoConfiguration.class)
 @SpringBootApplication
 public class MemberApplication {
 

@@ -1,9 +1,13 @@
 # XNXGAMES_Gateway
+
+# Info
+spring:
+  application:
+    name: gateway
+     
+# Port
 server:
   port: 8000
-  
-# Default
-spring:  application:    name: gateway
 
 # Gateway
 zuul:

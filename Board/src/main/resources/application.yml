@@ -1,9 +1,18 @@
 # XNXGAMES_Board
-server:
-  port: 8082
+
+spring:
+  profiles:
+    active: dev
+    
+---
+
+# Info
+spring:
+  profiles: dev
+  application:
+    name: board
 
 # DB
-spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/XNXGAMES_board?serverTimezone=UTC&characterEncoding=UTF-8
@@ -15,8 +24,16 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+      
+# Port    
+server:
+  port: 8082
+  
+---
 
-# Default
+# Info
+spring:
+  profiles: live
   application:
     name: board
 
@@ -26,6 +43,23 @@ spring:
     port: 5672
     username: guest
     password: guest
+    
+# DB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/XNXGAMES_board?serverTimezone=UTC&characterEncoding=UTF-8
+    username: XNXGAMES_BOARD
+    password: 5460
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      
+# Port    
+server:
+  port: 8082
 
 # Discovery
 eureka:

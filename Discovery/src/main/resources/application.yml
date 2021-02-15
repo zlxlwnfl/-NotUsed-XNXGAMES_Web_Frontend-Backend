@@ -1,4 +1,11 @@
 # XNXGAMES_Discovery
+
+# Info
+spring:
+  application:
+    name: discovery
+     
+# Port
 server:
   port: 8761
 
