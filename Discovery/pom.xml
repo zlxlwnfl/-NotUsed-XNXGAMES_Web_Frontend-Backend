@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.juri.XNXGAMES</groupId>
-	<artifactId>ServiceRegistry</artifactId>
+	<artifactId>Discovery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>ServiceRegistry</name>
-	<description>XNXGAEMS_ServiceRegistry</description>
+	<name>Discovery</name>
+	<description>XNXGAEMS_Discovery</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -69,6 +69,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

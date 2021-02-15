@@ -52,6 +52,8 @@ public class BoardController {
 		model.addAttribute("paging", paging);
 		model.addAttribute("postId", postId);
 		model.addAttribute("post", rpcService.getPost(postId));
+		
+		//
 	}
 	
 }
