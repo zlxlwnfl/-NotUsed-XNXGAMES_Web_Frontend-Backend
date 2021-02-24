@@ -1,5 +1,7 @@
 package com.juri.XNXGAMES.service;
 
+import java.util.Optional;
+
 import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.domain.entity.MemberPostEntity;
 import com.juri.XNXGAMES.domain.repository.MemberPostRepository;
@@ -25,8 +27,10 @@ public class MemberPostServiceImpl implements MemberPostService {
 	public void deleteMemberPost(BoardToMemberPostMessage message) {
 		String memberId = message.getMemberId();
 		
-		MemberPostEntity memberPost = memberPostRepository.findByMemberId(memberId).get();
-		memberPostRepository.delete(memberPost);
+		 Optional<MemberPostEntity> memberPost = memberPostRepository.findByMemberId(memberId);
+		 if(!memberPost.isPresent()) return;
+		
+		 memberPostRepository.delete(memberPost.get());
 	}
 	
 }
