@@ -25,6 +25,12 @@ spring:
     hibernate:
       ddl-auto: update
       
+# Discovery
+  cloud:    discovery:      enabled: false
+eureka:
+  client:
+    enabled: false
+    
 # Port    
 server:
   port: 8082
