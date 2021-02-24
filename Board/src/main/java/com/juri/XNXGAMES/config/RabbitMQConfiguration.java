@@ -13,14 +13,7 @@ import org.springframework.context.annotation.Profile;
 @Import(RabbitAutoConfiguration.class)
 @Configuration
 public class RabbitMQConfiguration {
-	/*
-	private static final String directExchangeName = "BoardExchange";
 	
-	@Bean
-	public DirectExchange exchange() {
-		return new DirectExchange(directExchangeName);
-	}
-	*/
 	@Bean
 	public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);

@@ -16,14 +16,9 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 public class RabbitMQConfiguration implements RabbitListenerConfigurer {
 
 	@Bean
-	public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
-		return new MappingJackson2MessageConverter();
-	}
-
-	@Bean
 	public DefaultMessageHandlerMethodFactory messageHandlerMethodFactory() {
 		DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
-		factory.setMessageConverter(consumerJackson2MessageConverter());
+		factory.setMessageConverter(new MappingJackson2MessageConverter());
 		return factory;
 	}
 
