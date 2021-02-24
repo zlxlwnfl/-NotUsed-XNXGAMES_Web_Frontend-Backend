@@ -9,7 +9,5 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {
-
-	
 	
 }

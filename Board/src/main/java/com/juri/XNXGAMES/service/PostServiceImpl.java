@@ -85,7 +85,8 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public PostGetDTO getPost(Long postId) {
-		PostEntity post = postRepository.findById(postId).get();
+		PostEntity post = postRepository.findById(postId).orElse(null);
+		if(post == null) return null;
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		

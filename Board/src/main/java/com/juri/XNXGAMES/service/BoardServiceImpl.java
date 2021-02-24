@@ -16,7 +16,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Long searchBoard(String type, String subType) {
-		return boardRepository.findByTypeAndSubType(type, subType).get().getId();
+		return boardRepository.findByTypeAndSubType(type, subType).orElse(null).getId();
 	}
 
 	@Override
