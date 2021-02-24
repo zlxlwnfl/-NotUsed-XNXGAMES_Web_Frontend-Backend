@@ -21,14 +21,13 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public void insertComment(CommentPutDTO commentDTO) {
-		CommentEntity comment = new CommentEntity();
-		
-		comment.setPostId(commentDTO.getPostId());
-		comment.setWriterId(commentDTO.getWriterId());
-		comment.setContent(commentDTO.getContent());
+		CommentEntity comment = CommentEntity.builder()
+				.postId(commentDTO.getPostId())
+				.writerId(commentDTO.getWriterId())
+				.content(commentDTO.getContent())
+				.build();
 		
 		commentRepository.save(comment);
-		
 	}
 	
 	@Override
@@ -47,18 +46,15 @@ public class CommentServiceImpl implements CommentService {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		for(CommentEntity comment : list) {
-			
-			CommentGetListDTO dto = new CommentGetListDTO();
-			dto.setCommentId(comment.getId());
-			dto.setWriterId(comment.getWriterId());
-			
-			dto.setRegdate(format.format(comment.getRegdate()));
-			
-			dto.setContent(comment.getContent());
-			dto.setHeartCount(comment.getHeartCount());
+			CommentGetListDTO dto = CommentGetListDTO.builder()
+					.commentId(comment.getId())
+					.writerId(comment.getWriterId())
+					.regdate(format.format(comment.getRegdate()))
+					.content(comment.getContent())
+					.heartCount(comment.getHeartCount())
+					.build();
 			
 			returnList.add(dto);
-			
 		}
 		
 		return returnList;

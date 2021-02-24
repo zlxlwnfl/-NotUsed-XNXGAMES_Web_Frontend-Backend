@@ -65,13 +65,14 @@ public class PostEntity {
 	private List<String> gameTagList;
 
 	@Builder
-	public PostEntity(String type, Long boardId, String writerId, String title, String content) {
+	public PostEntity(String type, Long boardId, String writerId, String title, String content, List<String> gameTagList) {
 		super();
 		this.type = type;
 		this.boardId = boardId;
 		this.writerId = writerId;
 		this.title = title;
 		this.content = content;
+		this.gameTagList = gameTagList;
 	}
 	
 }

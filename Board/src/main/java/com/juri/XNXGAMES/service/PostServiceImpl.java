@@ -28,14 +28,14 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public void insertPost(Long boardId, PostPutDTO postDTO) {
-		PostEntity post = new PostEntity();
-			
-		post.setType(postDTO.getPostType());
-		post.setBoardId(boardId);
-		post.setWriterId(postDTO.getWriterId());
-		post.setTitle(postDTO.getTitle());
-		post.setContent(postDTO.getContent());
-		post.setGameTagList(postDTO.getGameTagList());
+		PostEntity post = PostEntity.builder()
+				.type(postDTO.getPostType())
+				.boardId(boardId)
+				.writerId(postDTO.getWriterId())
+				.title(postDTO.getTitle())
+				.content(postDTO.getContent())
+				.gameTagList(postDTO.getGameTagList())
+				.build();
 		
 		PostEntity savedPost = postRepository.save(post);
 		
@@ -66,21 +66,18 @@ public class PostServiceImpl implements PostService {
 		SimpleDateFormat format = new SimpleDateFormat("MM-dd");
 		
 		for(PostEntity p : list) {
-			
-			PostGetListDTO dto = new PostGetListDTO();
-			dto.setPostId(p.getId());
-			dto.setPostType(p.getType());
-			dto.setWriterId(p.getWriterId());
-			dto.setCommentCount(p.getCommentCount());
-			
-			dto.setRegdate(format.format(p.getRegdate()));
-			
-			dto.setTitle(p.getTitle());
-			dto.setHits(p.getHits());
-			dto.setHeartCount(p.getHeartCount());
+			PostGetListDTO dto = PostGetListDTO.builder()
+					.postId(p.getId())
+					.postType(p.getType())
+					.writerId(p.getWriterId())
+					.commentCount(p.getCommentCount())
+					.regdate(format.format(p.getRegdate()))
+					.title(p.getTitle())
+					.hits(p.getHits())
+					.heartCount(p.getHeartCount())
+					.build();
 			
 			returnList.add(dto);
-			
 		}
 		
 		return returnList;
@@ -92,19 +89,18 @@ public class PostServiceImpl implements PostService {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		PostGetDTO dto = new PostGetDTO();
-		dto.setPostId(post.getId());
-		dto.setPostType(post.getType());
-		dto.setWriterId(post.getWriterId());
-		dto.setCommentCount(post.getCommentCount());
-		
-		dto.setRegdate(format.format(post.getRegdate()));
-		
-		dto.setTitle(post.getTitle());
-		dto.setContent(post.getContent());
-		dto.setHits(post.getHits());
-		dto.setHeartCount(post.getHeartCount());
-		dto.setGameTagList(post.getGameTagList());
+		PostGetDTO dto = PostGetDTO.builder()
+				.postId(post.getId())
+				.postType(post.getType())
+				.writerId(post.getWriterId())
+				.commentCount(post.getCommentCount())
+				.regdate(format.format(post.getRegdate()))
+				.title(post.getTitle())
+				.content(post.getContent())
+				.hits(post.getHits())
+				.heartCount(post.getHeartCount())
+				.gameTagList(post.getGameTagList())
+				.build();
 		
 		return dto;
 	}
