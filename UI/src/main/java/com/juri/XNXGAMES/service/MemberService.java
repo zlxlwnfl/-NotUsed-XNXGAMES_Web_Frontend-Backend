@@ -23,14 +23,8 @@ public class MemberService implements UserDetailsService {
 	private MemberRepository memberRepository;
 	
 	// ID 중복체크
-	public String checkIdPossible(String memberId) {
-		boolean result = memberRepository.findByMemberId(memberId).isPresent();
-		
-		if(result == true) {
-			return "false";
-		}else {
-			return "true";
-		}
+	public boolean checkIdPossible(String memberId) {
+		return !memberRepository.findByMemberId(memberId).isPresent();
 	}
 	
 	@Transactional
@@ -45,13 +39,7 @@ public class MemberService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
-		MemberEntity memberEntity = memberRepository.findByMemberId(memberId).get();
-
-		if(memberEntity == null) {
-			throw new UsernameNotFoundException("존재하지 않는 아이디입니다.");
-		}
-		
-        return memberEntity;
+		return memberRepository.findByMemberId(memberId).orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 아이디입니다."));
 	}
 
 }

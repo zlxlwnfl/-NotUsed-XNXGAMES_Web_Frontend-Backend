@@ -1,6 +1,5 @@
 package com.juri.XNXGAMES.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +36,18 @@ public class BoardController {
 		return "board/write";
 	}
 	
-	@GetMapping({"/read", "/modify"})
-	public void readOrModify(BoardType boardType, Paging paging, String postId, Model model) {
+	@GetMapping("/read")
+	public void read(BoardType boardType, Paging paging, String postId, Model model) {
+		model.addAttribute("boardType", boardType);
+		model.addAttribute("paging", paging);
+		model.addAttribute("postId", postId);
+		model.addAttribute("post", rpcService.getPost(postId));
+		
+		//
+	}
+	
+	@GetMapping("/modify")
+	public void modify(BoardType boardType, Paging paging, String postId, Model model) {
 		model.addAttribute("boardType", boardType);
 		model.addAttribute("paging", paging);
 		model.addAttribute("postId", postId);

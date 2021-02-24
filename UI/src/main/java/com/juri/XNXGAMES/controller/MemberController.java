@@ -49,7 +49,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/join/idCheck/{memberId}")
-	public @ResponseBody String idCheck(@PathVariable("memberId") String memberId) {
+	public @ResponseBody boolean idCheck(@PathVariable("memberId") String memberId) {
 		return memberService.checkIdPossible(memberId);
 	}
 	
