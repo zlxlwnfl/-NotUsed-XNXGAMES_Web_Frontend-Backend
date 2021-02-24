@@ -2,12 +2,15 @@ package com.juri.XNXGAMES.service;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.domain.entity.MemberPostEntity;
 import com.juri.XNXGAMES.domain.repository.MemberPostRepository;
 
 import lombok.AllArgsConstructor;
 
+@Service
 @AllArgsConstructor
 public class MemberPostServiceImpl implements MemberPostService {
 
@@ -28,9 +31,7 @@ public class MemberPostServiceImpl implements MemberPostService {
 		String memberId = message.getMemberId();
 		
 		 Optional<MemberPostEntity> memberPost = memberPostRepository.findByMemberId(memberId);
-		 if(!memberPost.isPresent()) return;
-		
-		 memberPostRepository.delete(memberPost.get());
+		 if(memberPost.isPresent()) memberPostRepository.delete(memberPost.get());
 	}
 	
 }

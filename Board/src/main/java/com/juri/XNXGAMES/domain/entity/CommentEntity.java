@@ -13,6 +13,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,10 +23,9 @@ import lombok.ToString;
 @Entity
 @Table(name = "comment")
 @Getter
-@Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
 public class CommentEntity {
 	
 	@Id
@@ -45,5 +46,12 @@ public class CommentEntity {
 	
 	@ColumnDefault("0")
 	private int heartCount;
+	
+	@Builder
+	public CommentEntity(Long postId, String writerId, String content) {
+		this.postId = postId;
+		this.writerId = writerId;
+		this.content = content;
+	}
 	
 }

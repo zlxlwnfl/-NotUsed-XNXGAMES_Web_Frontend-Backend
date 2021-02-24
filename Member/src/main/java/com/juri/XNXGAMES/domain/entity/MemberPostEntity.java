@@ -7,17 +7,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "memberPost")
-@Data
-@Builder
+@Getter
+@ToString
+@EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
 public class MemberPostEntity {
 
 	@Id
@@ -29,5 +30,12 @@ public class MemberPostEntity {
 	
 	@Column(nullable = false)
 	private Long postId;
+
+	@Builder
+	public MemberPostEntity(String memberId, Long postId) {
+		super();
+		this.memberId = memberId;
+		this.postId = postId;
+	}
 	
 }

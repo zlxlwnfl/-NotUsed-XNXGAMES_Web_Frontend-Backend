@@ -15,19 +15,18 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Table(name = "post")
 @Getter
-@Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
 public class PostEntity {
 	
 	@Id
@@ -64,5 +63,15 @@ public class PostEntity {
 	@Column(nullable = true)
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> gameTagList;
+
+	@Builder
+	public PostEntity(String type, Long boardId, String writerId, String title, String content) {
+		super();
+		this.type = type;
+		this.boardId = boardId;
+		this.writerId = writerId;
+		this.title = title;
+		this.content = content;
+	}
 	
 }

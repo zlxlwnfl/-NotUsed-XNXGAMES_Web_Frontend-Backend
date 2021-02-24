@@ -7,11 +7,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "board")
-@Data
+@Getter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 public class BoardEntity {
 	
 	@Id
@@ -23,5 +30,12 @@ public class BoardEntity {
 	
 	@Column(length = 20, nullable = false)
 	private String subType;
+
+	@Builder
+	public BoardEntity(String type, String subType) {
+		super();
+		this.type = type;
+		this.subType = subType;
+	}
 	
 }

@@ -1,12 +1,24 @@
 package com.juri.XNXGAMES.domain.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "memberComment")
-@Data
+@Getter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 public class MemberCommentEntity {
 
 	@Id
@@ -18,5 +30,12 @@ public class MemberCommentEntity {
 	
 	@Column(nullable = false)
 	private Long commentId;
+
+	@Builder
+	public MemberCommentEntity(String memberId, Long commentId) {
+		super();
+		this.memberId = memberId;
+		this.commentId = commentId;
+	}
 	
 }
