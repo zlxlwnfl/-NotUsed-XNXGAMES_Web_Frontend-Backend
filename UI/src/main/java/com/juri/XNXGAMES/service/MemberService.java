@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.juri.XNXGAMES.domain.MemberRole;
 import com.juri.XNXGAMES.domain.entity.MemberEntity;
-import com.juri.XNXGAMES.domain.entity.MemberRoleEntity;
 import com.juri.XNXGAMES.domain.repository.MemberRepository;
 
 import lombok.AllArgsConstructor;
@@ -35,12 +35,9 @@ public class MemberService implements UserDetailsService {
 	
 	@Transactional
     public String join(MemberEntity memberEntity) {
-		MemberRoleEntity role = MemberRoleEntity.builder()
-				.value("ROLE_MEMBER")
-				.build();
+		MemberRole role = MemberRole.ADMIN;
 		
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberEntity.setPassword(passwordEncoder.encode(memberEntity.getPassword()));
+        memberEntity.setPassword(new BCryptPasswordEncoder().encode(memberEntity.getPassword()));
         memberEntity.setRoles(Arrays.asList(role));
 
         return memberRepository.save(memberEntity).getMemberId();

@@ -6,8 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +24,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.juri.XNXGAMES.domain.MemberRole;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,16 +57,17 @@ public class MemberEntity implements UserDetails {
 	@CreationTimestamp
 	private Date regdate;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="memberId")
-	private List<MemberRoleEntity> roles;
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "MemberRole", joinColumns = @JoinColumn(name = "id"))
+	@Enumerated(EnumType.STRING)
+	private List<MemberRole> roles;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
-		for(MemberRoleEntity role : roles) {
-			authorities.add(new SimpleGrantedAuthority(role.getValue()));
+		for(MemberRole role : roles) {
+			authorities.add(new SimpleGrantedAuthority(role.name()));
 		}
 
 		return authorities;
