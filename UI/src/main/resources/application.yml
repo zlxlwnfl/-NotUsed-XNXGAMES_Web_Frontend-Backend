@@ -2,12 +2,6 @@
 
 spring:
   profiles:    active: dev
-
----
-
-# Info
-spring:
-  profiles: dev
   application:
     name: ui
   http:
@@ -15,6 +9,20 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+
+# Port
+server:
+  port: 8080
+
+# HTTP encoding
+  tomcat:
+    uri-encoding: UTF-8
+    
+---
+
+# Info
+spring:
+  profiles: dev
     
 # DB
   datasource:
@@ -28,27 +36,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      
-# Port
-server:
-  port: 8080
-
-# HTTP encoding
-  tomcat:
-    uri-encoding: UTF-8
     
 ---
 
 # Info
 spring:
   profiles: live
-  application:
-    name: ui
-  http:
-    encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
     
 # DB
   datasource:
@@ -62,14 +55,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      
-# Port
-server:
-  port: 8080
-
-# HTTP encoding
-  tomcat:
-    uri-encoding: UTF-8
 
 # Log
 logging:

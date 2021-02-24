@@ -3,14 +3,23 @@
 spring:
   profiles:
     active: dev
-    
+  application:
+    name: board
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      
+# Port    
+server:
+  port: 8082
+  
 ---
 
 # Info
 spring:
   profiles: dev
-  application:
-    name: board
 
 # DB
   datasource:
@@ -30,18 +39,12 @@ spring:
 eureka:
   client:
     enabled: false
-    
-# Port    
-server:
-  port: 8082
   
 ---
 
 # Info
 spring:
   profiles: live
-  application:
-    name: board
 
 # RabbitMQ
   rabbitmq:
@@ -62,10 +65,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      
-# Port    
-server:
-  port: 8082
 
 # Discovery
 eureka:

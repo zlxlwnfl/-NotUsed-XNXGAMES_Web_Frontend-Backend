@@ -3,14 +3,23 @@
 spring:
   profiles:
     active: dev
+  application:
+    name: member
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+          
+# Port
+server:
+  port: 8081
     
 ---
 
 # Info
 spring:
   profiles: dev
-  application:
-    name: member
     
 # DB
   datasource:
@@ -32,23 +41,12 @@ spring:
 eureka:
   client:
     enabled: false
-          
-# Port
-server:
-  port: 8081
     
 ---
 
 # Info
 spring:
   profiles: live
-  application:
-    name: member
-  http:
-    encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
     
 # RabbitMQ
   rabbitmq:
@@ -69,10 +67,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      
-# Port
-server:
-  port: 8081
     
 # Discovery
 eureka:
