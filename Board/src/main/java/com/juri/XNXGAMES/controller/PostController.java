@@ -37,51 +37,60 @@ public class PostController {
 	PostService postService;
 	
 	@PostMapping("/")
-	public void insertPost(@RequestBody PostPutDTO postDTO) throws BoardSearchFailException {
+	public ResponseEntity<Void> insertPost(@RequestBody PostPutDTO postDTO) throws BoardSearchFailException {
 		String boardType = postDTO.getBoardType();
 		String boardSubType = postDTO.getBoardSubType();
 		
 		Long boardId = boardService.searchBoard(boardType, boardSubType);
 		PostAssert.isBoardId(boardId);
 		postService.insertPost(boardId, postDTO);
+		
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/")
-	public void updatePost(@RequestBody PostPutDTO postDTO) {
+	public ResponseEntity<Void> updatePost(@RequestBody PostPutDTO postDTO) {
 		postService.updatePost(postDTO);
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/list")
-	public List<PostGetListDTO> getPostList(@RequestBody BoardCriteriaDTO boardCriDTO) throws BoardSearchFailException {
+	public ResponseEntity<List<PostGetListDTO>> getPostList(@RequestBody BoardCriteriaDTO boardCriDTO) throws BoardSearchFailException {
 		System.out.println(boardCriDTO.getBoardType() + " " + boardCriDTO.getBoardSubType());
 		
 		Long boardId = boardService.searchBoard(boardCriDTO.getBoardType(), 
 												boardCriDTO.getBoardSubType());
 		PostAssert.isBoardId(boardId);
 		
-		return postService.getPostList(boardId, boardCriDTO);
+		List<PostGetListDTO> list = postService.getPostList(boardId, boardCriDTO);
+		
+		if(list.isEmpty()) 	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		else				return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{postId}")
-	public PostGetDTO getPost(@PathVariable("postId") Long postId) throws PostSearchFailException {
+	public ResponseEntity<PostGetDTO> getPost(@PathVariable("postId") Long postId) throws PostSearchFailException {
 		PostGetDTO post = postService.getPost(postId);
 		PostAssert.isPost(post);
 		
-		return post;
+		return new ResponseEntity<>(post, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{postId}")
-	public void deletePost(@PathVariable("postId") Long postId) {
+	public ResponseEntity<Void> deletePost(@PathVariable("postId") Long postId) {
 		postService.deletePost(postId);
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/amount/{boardType}/{boardSubType}")
-	public int getAmountPost(@PathVariable("boardType") String boardType,
+	public ResponseEntity<Integer> getAmountPost(@PathVariable("boardType") String boardType,
 							 @PathVariable("boardSubType") String boardSubType) throws BoardSearchFailException {
 		Long boardId = boardService.searchBoard(boardType, boardSubType);
 		PostAssert.isBoardId(boardId);
 		
-		return postService.getAmountPost(boardId);
+		return new ResponseEntity<>(postService.getAmountPost(boardId), HttpStatus.OK);
 	}
 	
 	@ExceptionHandler(BoardSearchFailException.class)

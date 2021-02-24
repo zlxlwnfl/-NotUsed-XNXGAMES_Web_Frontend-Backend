@@ -2,6 +2,8 @@ package com.juri.XNXGAMES.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,23 +27,32 @@ public class CommentController {
 	CommentService commentService;
 	
 	@PostMapping("/")
-	public void insertComment(@RequestBody CommentPutDTO commentDTO) {
+	public ResponseEntity<Void> insertComment(@RequestBody CommentPutDTO commentDTO) {
 		commentService.insertComment(commentDTO);
+		
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/")
-	public void modifyComment(@RequestBody CommentPutDTO commentDTO) {
+	public ResponseEntity<Void> modifyComment(@RequestBody CommentPutDTO commentDTO) {
 		commentService.modifyComment(commentDTO);
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/{postId}")
-	public List<CommentGetListDTO> getCommentList(@PathVariable("postId") Long postId) {
-		return commentService.getCommentList(postId);
+	public ResponseEntity<List<CommentGetListDTO>> getCommentList(@PathVariable("postId") Long postId) {
+		List<CommentGetListDTO> list = commentService.getCommentList(postId);
+		
+		if(list.isEmpty()) 	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		else				return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{postId}")
-	public void deleteComment(@PathVariable("postId") Long commentId) {
+	public ResponseEntity<Void> deleteComment(@PathVariable("postId") Long commentId) {
 		commentService.deleteComment(commentId);
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 	
 }
