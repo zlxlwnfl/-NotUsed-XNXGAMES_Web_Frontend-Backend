@@ -7,9 +7,9 @@ import lombok.Data;
 @Builder
 public class CommentPutDTO {
 
-	private Long postId;
-	private Long commentId;
-	private String writerId;
-	private String content;
+	private final Long postId;
+	private final Long commentId;
+	private final String writerId;
+	private final String content;
 	
 }

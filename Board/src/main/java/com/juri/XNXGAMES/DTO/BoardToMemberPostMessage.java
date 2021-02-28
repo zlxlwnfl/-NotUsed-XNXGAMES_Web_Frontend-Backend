@@ -1,4 +1,4 @@
-package com.juri.XNXGAMES.domain;
+package com.juri.XNXGAMES.DTO;
 
 import java.io.Serializable;
 
@@ -6,13 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class BoardToMemberPostMessage implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String type; // create, delete
-	private String memberId;
-	private Long postId;
+	private final String type; // create, delete
+	private final String memberId;
+	private final Long postId;
 	
 }

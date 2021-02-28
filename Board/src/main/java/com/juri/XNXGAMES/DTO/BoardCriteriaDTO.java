@@ -7,9 +7,9 @@ import lombok.Data;
 @Builder
 public class BoardCriteriaDTO {
 
-	private String boardType;
-	private String boardSubType;
-	private int currentPageNum;
-	private int amountData;
+	private final String boardType;
+	private final String boardSubType;
+	private final int currentPageNum;
+	private final int amountData;
 	
 }

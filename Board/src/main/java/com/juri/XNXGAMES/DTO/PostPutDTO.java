@@ -9,13 +9,13 @@ import lombok.Data;
 @Builder
 public class PostPutDTO {
 
-	private String boardType;
-	private String boardSubType;
-	private Long postId;
-	private String title;
-	private String content;
-	private String writerId;
-	private String postType;
-	private List<String> gameTagList;
+	private final String boardType;
+	private final String boardSubType;
+	private final Long postId;
+	private final String title;
+	private final String content;
+	private final String writerId;
+	private final String postType;
+	private final List<String> gameTagList;
 	
 }

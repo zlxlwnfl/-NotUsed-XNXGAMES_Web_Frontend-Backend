@@ -10,11 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.juri.XNXGAMES.DTO.BoardCriteriaDTO;
+import com.juri.XNXGAMES.DTO.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.DTO.PostGetDTO;
 import com.juri.XNXGAMES.DTO.PostGetListDTO;
 import com.juri.XNXGAMES.DTO.PostPutDTO;
 import com.juri.XNXGAMES.controller.EventDispatcher;
-import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.domain.entity.PostEntity;
 import com.juri.XNXGAMES.domain.repository.PostRepository;
 

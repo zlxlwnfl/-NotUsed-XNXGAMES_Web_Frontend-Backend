@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
+import com.juri.XNXGAMES.DTO.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.domain.entity.MemberPostEntity;
 import com.juri.XNXGAMES.domain.repository.MemberPostRepository;
 

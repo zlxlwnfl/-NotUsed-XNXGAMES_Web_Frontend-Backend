@@ -7,10 +7,10 @@ import lombok.Data;
 @Builder
 public class CommentGetListDTO {
 
-	private Long commentId;
-	private String writerId;
-	private String regdate;
-	private String content;
-	private int heartCount;
+	private final Long commentId;
+	private final String writerId;
+	private final String regdate;
+	private final String content;
+	private final int heartCount;
 	
 }

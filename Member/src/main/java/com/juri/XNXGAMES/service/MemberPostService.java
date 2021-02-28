@@ -1,7 +1,8 @@
 package com.juri.XNXGAMES.service;
 
 import org.springframework.stereotype.Service;
-import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
+
+import com.juri.XNXGAMES.DTO.BoardToMemberPostMessage;
 
 public interface MemberPostService {
 	

@@ -1,4 +1,4 @@
-package com.juri.XNXGAMES.domain;
+package com.juri.XNXGAMES.DTO;
 
 import java.io.Serializable;
 

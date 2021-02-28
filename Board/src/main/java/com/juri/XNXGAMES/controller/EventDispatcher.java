@@ -4,7 +4,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
+import com.juri.XNXGAMES.DTO.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.service.CommentService;
 
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;

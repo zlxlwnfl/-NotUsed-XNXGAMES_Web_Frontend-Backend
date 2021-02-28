@@ -6,7 +6,7 @@ import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import com.juri.XNXGAMES.domain.BoardToMemberPostMessage;
+import com.juri.XNXGAMES.DTO.BoardToMemberPostMessage;
 import com.juri.XNXGAMES.service.MemberPostService;
 
 import lombok.AllArgsConstructor;
