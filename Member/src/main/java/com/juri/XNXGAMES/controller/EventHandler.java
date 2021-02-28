@@ -27,10 +27,14 @@ public class EventHandler {
 			key = "BoardToMember.Post"
 			))
 	public void boardToMemberPostHandle(final BoardToMemberPostMessage message) {
-		if(message.getType().equals("create"))
+		switch(message.getType()) {
+		case "create":
 			memberPostService.insertMemberPost(message);
-		else if(message.getType().equals("delete"))
+			break;
+		case "delete":
 			memberPostService.deleteMemberPost(message);
+			break;
+		}
 	}
 	
 }
