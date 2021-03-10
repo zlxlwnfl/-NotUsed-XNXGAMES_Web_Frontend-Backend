@@ -13,7 +13,7 @@ public class TestController {
 	
 	@GetMapping("/testSuccess")
 	public void testSuccess() {
-		
+		System.out.println("success");
 	}
 	
 }
