@@ -1,0 +1,11 @@
+# XNXGAMES_Auth
+
+server:
+  port: 9090
+
+# Keycloak
+keycloak:  auth-server-url: http://192.168.99.101:8080/auth
+  realm: XNXGAMES
+  resource: xnxgames_web
+  public-client: true
+  principal-attribute: preferred_username
